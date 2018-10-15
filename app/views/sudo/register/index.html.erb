@@ -1,0 +1,15 @@
+
+<%= form_with scope: :register, local: true, class: "form-signin" do |form| %>
+    <h1 class="h4 mb-3 font-weight-normal">Maxwell, Create Sudo User</h1>
+
+    <%= render 'shared/user_error' %>
+
+    <input type="text" id="full_name" name="register[full_name]" class="form-control" placeholder="Full name" required autofocus>
+    <input type="email" id="email" name="register[email]" class="form-control" placeholder="Email address" required>
+    <input type="password" id="password" name="register[password]" class="form-control" placeholder="Password" required>
+    <input type="password" id="password_confirm" name="register[password_confirm]" pattern=".{5,10}" class="form-control" placeholder="Confirm Password" required>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Create Sudo User</button>
+    <%= link_to("Back to login", sudo_login_path) %>
+    <p class="mt-2 mb-3 text-muted">&copy; <%= "#{Time.new.year} #{@site_name}" %></p>
+<% end %>

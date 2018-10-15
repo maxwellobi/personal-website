@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class AdminController < ActionController::Base
     attr_reader :site_name
 
     def initialize
