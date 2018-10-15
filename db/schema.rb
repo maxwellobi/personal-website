@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_211416) do
+ActiveRecord::Schema.define(version: 2018_10_02_020028) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_211416) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "password"
+    t.string "password_hash"
     t.string "full_name"
     t.text "about"
     t.datetime "created_at", null: false
