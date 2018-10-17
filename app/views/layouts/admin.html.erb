@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Maxwell Obi</title>
+    <title><%= @site_name %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"> </script>
+    
   </head>
 
   <body>
   
-    <%= yield %>
-    
+    <div class="container">
+      <div class="row">
+
+        <%# Header / Logo %>
+        <div class="col-md-3 order-md-1">
+        
+          <%= render 'shared/author_head' %>
+          
+        </div>
+
+        <%# Body %>
+        <div class="col-md-9 order-md-2">
+
+          <%= yield %>
+
+        </div>
+              
+      </div>
+
+    </div>    
   </body>
 </html>
