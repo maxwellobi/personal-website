@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <h4 class="mb-3">Create new Article</h4>
+
+        <% if @article && @article.errors.any? %>
+            <div class="alert alert-danger">
+                <%= @article.errors.full_messages[0] %>
+            </div>
+        <% end %>
+
+        <%= form_for [:sudo, @article], local: true do |form| %>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    
+                    <%= form.label :title %>
+                    <%= form.text_field :title, :class => "form-control", placeholder: "Article Title", required: true %>
+
+                </div>
+
+                <div class="col-md-6">
+                    <label for="tag">Tags</label>
+                    <input type="text" class="form-control" value="<%= @article_tags %>" id="article_tags" name="article[tags]" placeholder="Comma separated tags" />
+                    
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="slug">Optional Slug</label>
+                    <%= form.text_field :slug, :class => "form-control", placeholder: "Optional url slug" %>
+                </div>
+                <div class="col-md-4">
+                    <label for="published">Publish</label>
+                    <%= select("article", :published, [true, false], { selected: @article.published ||= false }, class: "form-control") %>
+                </div>
+                <div class="col-md-4">
+                    <label> Publish Date</label>
+                    <%= form.text_field :published_at, :value => @article_publish_date, :class => "form-control", placeholder: "Date to publish", 'data-provide': "datepicker", 'data-date-format': "dd/mm/yyyy", autocomplete: "off" %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <%= form.label :article %>
+                    <%= form.text_area :article, :class => "form-control", 'data-provider': :summernote %>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">SAVE ARTICLE</button>
+
+       <% end %>
+    </div>
+</div>

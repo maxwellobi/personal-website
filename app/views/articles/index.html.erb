@@ -1,2 +1,26 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<% content_for :head_style do %>
+  <%= stylesheet_link_tag :articles %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+ <div class="posts">
+    <div class="posts-inner">
+    
+    <%= render @articles %>
+
+    </div>
+
+
+    <div class="pagination-wrap">
+        <div class="older">
+            <a href="#">Older Posts <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div class="newer">
+            <a href="#"><i class="fas fa-angle-double-left"></i> Newer Posts</a>
+        </div>
+    </div>
+
+</div>

@@ -9,9 +9,13 @@ Rails.application.routes.draw do
 
     get '/login', to: 'login#index'
     post '/login', to: 'login#create'
+    delete '/login', to: 'login#destroy'
+
+    resources :articles
 
     root 'login#index'
   end
 
-  # get '/admin', to: 'login#index'
+  resources :articles
+  root 'articles#index'
 end

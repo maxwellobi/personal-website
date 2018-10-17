@@ -1,0 +1,51 @@
+
+<article class="post">
+    <div class="post-header">
+        <h2 class="title">
+            <%= link_to article.title, controller: "articles", action: "show", id: article.slug%>
+            
+        </h2>
+
+        <div class="post-details">
+            <span><%= article.published_at.strftime("%B %d, %Y") %></span>
+
+            <div class="post-cat">
+                <% article.tags.each do |t| %>
+                    <a href="#">#<%= t.tag.strip %></a>
+                <% end %>
+            </div>
+
+            <% if session[:user_id] %>
+                <div class="post-cat">
+                    <%= link_to 'Edit', edit_sudo_article_path(article), class: "text-primary" %> 
+                    
+                    <% if @article %>
+                        | <%= link_to 'Delete', sudo_article_path(article),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' },
+                            class: "text-primary" %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="post-content">
+        <div class="the-excerpt">
+            <% if @article %>
+                <%= raw(article.article) %>
+            <% else %>
+                <p>
+                    <%= get_excerpt(article.article) %>
+                </p>
+            <% end %>
+        </div>
+    </div>
+
+    <% if !@article %>
+        <div class="read-more">
+            <%= link_to "Continue Reading ...", controller: "articles", action: "show", id: article.slug%>
+        </div>
+    <% end %>
+
+</article>

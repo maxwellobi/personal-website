@@ -1,0 +1,12 @@
+<% content_for :head_style do %>
+  <%= stylesheet_link_tag :articles %>
+<% end %>
+
+ <div class="posts">
+    <div class="posts-inner">
+    
+        <%= render @article %>
+
+    </div>
+
+</div>

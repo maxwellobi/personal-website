@@ -1,0 +1,33 @@
+ <div class="header affix">
+    <div class="logo"><a href="/">Maxwell Obi</a></div>
+    <p>
+        Software Engineer | Entrepreneur | Thinker<br>
+        Co-founder/CTO at <a href="https://amplifypay.com" target="_blank">Amplified</a>
+    </p>
+    <div class="main-menu">
+        <nav>
+            <ul class="menu-list">
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="socials">
+        <a href="#" target="_blank" title="Github"><i class="fab fa-github-square"></i></a>
+        <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a>
+    </div>
+    <div class="copyright">
+        <p> me@maxwellobi.com <br>
+            <a href="#">&copy; Maxwell Obi</a>, 2018
+        </p>
+    </div>
+
+    <% if session[:user_id] %>
+        <div>
+            <%= link_to 'NEW ARTICLE', new_sudo_article_path, { class: "btn btn-sm btn-outline-info", role: "button" } %> | 
+            <%= link_to 'LOG OUT', sudo_login_path, method: :delete %>
+        </div>
+    <% end %>
+    
+</div>
