@@ -13,8 +13,10 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require summernote/summernote-bs4.min
+//= require summernote-init
+//= require_tree .
