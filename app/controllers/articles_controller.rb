@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
 
   def show
 
+    @article = nil
     if session[:user_id] 
       @article = Article.find_by_slug(params[:id])
     else 
@@ -26,6 +27,8 @@ class ArticlesController < ApplicationController
           .where(:published => true)
           .find_by_slug(params[:id])
     end
+
+    @article or not_found
   end
 
   def tag
