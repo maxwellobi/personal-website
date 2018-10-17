@@ -4,9 +4,12 @@ class ArticlesController < ApplicationController
     @articles = []
 
     if session[:user_id]
-      @articles = Article.eager_load(:tags).order(created_at: :desc)
+      @articles = Article
+                .paginate(:page => params[:page], :per_page => 4)
+                .eager_load(:tags).order(created_at: :desc)
     else 
       @articles = Article
+                .paginate(:page => params[:page], :per_page => 4)
                 .where(:published => true)
                 .eager_load(:tags)
                 .order(created_at: :desc)
@@ -15,9 +18,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article
-        .where(:published => true)
-        .find_by_slug(params[:id])
+
+    if session[:user_id] 
+      @article = Article.find_by_slug(params[:id])
+    else 
+      @article = Article
+          .where(:published => true)
+          .find_by_slug(params[:id])
+    end
   end
 
   def tag
@@ -26,11 +34,13 @@ class ArticlesController < ApplicationController
     if session[:user_id]
       @tagged_articles = Tag.where(:tag => params[:tag])
                 .eager_load(:article)
+                .paginate(:page => params[:page], :per_page => 4)
                 .order(created_at: :desc)
     else 
       @tagged_articles = Tag.where(:tag => params[:tag])
                 .eager_load(:article)
                 .where("articles.published = ?", true)
+                .paginate(:page => params[:page], :per_page => 4)
                 .order(created_at: :desc)
     end 
 

@@ -16,12 +16,7 @@
 
 
     <div class="pagination-wrap">
-        <div class="older">
-            <a href="#">Older Posts <i class="fas fa-angle-double-right"></i></a>
-        </div>
-        <div class="newer">
-            <a href="#"><i class="fas fa-angle-double-left"></i> Newer Posts</a>
-        </div>
+       <%= will_paginate @tagged_articles, :page_links => false %>
     </div>
 
 </div>

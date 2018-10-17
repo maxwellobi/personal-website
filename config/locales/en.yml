@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    previous_label: "<i class=\"fas fa-angle-double-left\"></i> Newer Posts"
+    next_label: "Older Posts <i class=\"fas fa-angle-double-right\"></i>"
