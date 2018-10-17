@@ -15,13 +15,26 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find_by_slug(params[:id])
+    @article = Article
+        .where(:published => true)
+        .find_by_slug(params[:id])
   end
 
-  def new
+  def tag
+    @tagged_articles = []
+
+    if session[:user_id]
+      @tagged_articles = Tag.where(:tag => params[:tag])
+                .eager_load(:article)
+                .order(created_at: :desc)
+    else 
+      @tagged_articles = Tag.where(:tag => params[:tag])
+                .eager_load(:article)
+                .where("articles.published = ?", true)
+                .order(created_at: :desc)
+    end 
 
   end
-
 
   # index, show, new, edit, create, update and destroy
 

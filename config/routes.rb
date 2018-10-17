@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   end
 
   resources :articles
+  get '/articles/tags/:tag', to: 'articles#tag'
+  get '/about', to: 'user#about'
+
   root 'articles#index'
 end

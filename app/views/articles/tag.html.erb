@@ -1,0 +1,27 @@
+<% content_for :head_style do %>
+  <%= stylesheet_link_tag :articles %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+ <div class="posts">
+    <div class="posts-inner">
+    
+        <% @tagged_articles.each do |tagged_article| %>
+            <%= render tagged_article.article if tagged_article.article  %>
+        <% end %>
+    </div>
+
+
+    <div class="pagination-wrap">
+        <div class="older">
+            <a href="#">Older Posts <i class="fas fa-angle-double-right"></i></a>
+        </div>
+        <div class="newer">
+            <a href="#"><i class="fas fa-angle-double-left"></i> Newer Posts</a>
+        </div>
+    </div>
+
+</div>

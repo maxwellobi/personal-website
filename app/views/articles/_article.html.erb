@@ -2,7 +2,7 @@
 <article class="post">
     <div class="post-header">
         <h2 class="title">
-            <%= link_to article.title, controller: "articles", action: "show", id: article.slug%>
+            <%= link_to article.title, controller: "articles", action: "show", id: article.slug %>
             
         </h2>
 
@@ -11,20 +11,20 @@
 
             <div class="post-cat">
                 <% article.tags.each do |t| %>
-                    <a href="#">#<%= t.tag.strip %></a>
+                    <%= link_to "#" << t.tag.strip, controller: "articles", action: "tag", tag: t.tag.strip %>
                 <% end %>
             </div>
 
             <% if session[:user_id] %>
                 <div class="post-cat">
                     <%= link_to 'Edit', edit_sudo_article_path(article), class: "text-primary" %> 
-                    
                     <% if @article %>
                         | <%= link_to 'Delete', sudo_article_path(article),
                             method: :delete,
                             data: { confirm: 'Are you sure?' },
                             class: "text-primary" %>
                     <% end %>
+                    | <span class="badge badge-<%= article.published ? "info" : "danger" %>"><%= article.published ? "published" : "not published" %></span>
                 </div>
             <% end %>
         </div>
