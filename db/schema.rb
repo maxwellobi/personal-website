@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_202428) do
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "article_id"
+    t.bigint "article_id"
     t.index ["article_id"], name: "index_tags_on_article_id"
   end
 
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_10_16_202428) do
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "tags", "articles"
 end
