@@ -28,7 +28,13 @@ class ArticlesController < ApplicationController
           .find_by_slug(params[:id])
     end
 
-    @article or not_found
+    if @article
+      @site_name = @article.title + " | Maxwell Obi"
+      @site_desc = helpers.get_excerpt(@article.article, 35)
+    else 
+      not_found
+    end
+    
   end
 
   def tag

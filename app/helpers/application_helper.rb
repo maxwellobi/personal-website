@@ -4,9 +4,9 @@ module ApplicationHelper
         slug = text.gsub(/\s+/, '-').downcase
     end
 
-    def get_excerpt(text)
+    def get_excerpt(text, number_of_words = 54)
         text = strip_tags(text)
         words = text.split
-        words[0..54].join(" ")
+        words[0..number_of_words].join(" ")
     end
 end

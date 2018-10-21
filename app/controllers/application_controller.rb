@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
     def initialize
         super
-        @site_name = "Maxwell Obi - Senior Software Engineer"
+        @site_name = "Maxwell Obi | Software Engineer and Entrepreneur"
+        @site_desc = "Maxwell Obi is the Co-founder and CTO of Amplified Payments. He holds a Bachelor of Science Degree in Computer Science and has vast Software Engineering experience";
     end
 
     def not_found

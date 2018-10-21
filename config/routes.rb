@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   end
 
   resources :articles
-  get '/articles/tags/:tag', to: 'articles#tag'
+  get '/tags/:tag', to: 'articles#tag'
   get '/about', to: 'user#about'
 
   match "/404", :to => "error#show", :via => :all
 
   get '/error/:code', to: 'error#show'
+
+  get '/:id', to: 'articles#show' 
 
   match '*unmatched_route', :to => 'application#not_found', :via => :all
   root 'articles#index'
