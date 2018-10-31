@@ -15,5 +15,6 @@ COPY . /personalwebsite
 
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES true
+ENV SECRET_KEY_BASE max12345
 
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
