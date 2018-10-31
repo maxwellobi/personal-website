@@ -665,11 +665,11 @@ body {
   max-width: 45%;
 }
 
-.pagination-wrap a, span {
+.pagination-wrap a {
   display: inline-block;
   color: darkslategray;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-size: 11px;
   font-weight: 700;
   -webkit-transition: 0.3s;
