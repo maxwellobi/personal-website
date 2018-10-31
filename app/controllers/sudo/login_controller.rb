@@ -1,4 +1,4 @@
-class Sudo::LoginController < AdminController
+class Sudo::LoginController < AdminController    
 
     def index
         redirect_to root_url if session[:user_id]
