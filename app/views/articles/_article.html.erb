@@ -43,7 +43,7 @@
 
     <% if !@article %>
         <div class="read-more">
-            <%= link_to "Continue Reading ...", controller: "articles", action: "show", id: article.slug%>
+            <%= link_to "Continue Reading ...", "/" << article.slug %>
         </div>
     <% end %>
 

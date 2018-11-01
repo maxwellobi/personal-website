@@ -6,13 +6,13 @@ class ArticlesController < ApplicationController
     if session[:user_id]
       @articles = Article
                 .paginate(:page => params[:page], :per_page => 4)
-                .eager_load(:tags).order(created_at: :desc)
+                .eager_load(:tags).order(published_at: :desc)
     else 
       @articles = Article
                 .paginate(:page => params[:page], :per_page => 4)
                 .where(:published => true)
                 .eager_load(:tags)
-                .order(created_at: :desc)
+                .order(published_at: :desc)
     end 
 
   end
