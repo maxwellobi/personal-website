@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
   $('[data-provider="summernote"]').each ->
     $(this).summernote
       height: 300
